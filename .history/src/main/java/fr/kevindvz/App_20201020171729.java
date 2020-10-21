@@ -14,8 +14,7 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        Jeu test = new Jeu();
-        test.jeu();
-
+        Jeu lol = new Jeu();
+        System.out.println(lol);
     }
 }

@@ -1,5 +1,7 @@
 package fr.kevindvz;
 
+import com.github.javafaker.Faker;
+
 /**
  * Hello world!
  */
@@ -17,5 +19,6 @@ public final class App {
         Jeu test = new Jeu();
         test.jeu();
 
+        System.out.println(test);
     }
 }

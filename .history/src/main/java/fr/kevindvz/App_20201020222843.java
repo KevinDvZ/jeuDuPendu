@@ -1,5 +1,7 @@
 package fr.kevindvz;
 
+import com.github.javafaker.Faker;
+
 /**
  * Hello world!
  */
