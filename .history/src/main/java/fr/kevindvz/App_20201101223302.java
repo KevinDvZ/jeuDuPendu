@@ -16,13 +16,10 @@ public final class App {
     public static void main(String[] args) {
         Jeu partie = new Jeu();
         partie.viderEcran();
-        System.out.println("Bienvenue dans le jeu du pendu.");
+        partie.ecranChoixJoueur();
         while (partie.ecranChoixJoueur() == false) {
-            System.out.println("");
+            partie.ecranChoixJoueur();
         }
-        partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
 
     }
 }

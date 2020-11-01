@@ -112,10 +112,6 @@ public class Jeu {
         System.out.println("     ------   ");
 
     }
-
-    public void invitationCommande() {
-
-    }
 }
 
 // Scanner lettre = new Scanner(System.in);

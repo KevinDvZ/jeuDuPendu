@@ -12,14 +12,12 @@ public class Jeu {
     String motMystere;
     Joueur[] listeJoueur;
     int nombreJoueurs;
-    int essaisRestants;
     private Scanner clavier;
     private String clavierEntre;
 
     public Jeu() {
         this.nouveauMot();
         clavier = new Scanner(System.in);
-        essaisRestants = 0;
     }
 
     public String nouveauMot() {
@@ -75,46 +73,13 @@ public class Jeu {
     }
 
     public void afficherDessinPendu() {
-        if (essaisRestants == 0) {
-            System.out.println("DOMMAGE !\n\n");
-        }
         System.out.println("     |--|     ");
-        if (essaisRestants == 7) {
-            System.out.println("        |     ");
-        } else {
-            System.out.println("     O  |     ");
-        }
-        if (essaisRestants >= 6) {
-            System.out.println("        |     ");
-        }
-        if (essaisRestants == 5) {
-            System.out.println("     |  |     ");
-        }
-        if (essaisRestants == 4) {
-            System.out.println("    /|  |     ");
-        }
-        if (essaisRestants <= 3) {
-            System.out.println("    /|\\ |     ");
-        }
-        if (essaisRestants > 2) {
-            System.out.println("        |     ");
-        }
-        if (essaisRestants <= 2) {
-            System.out.println("     -  |     ");
-        }
-        if (essaisRestants == 1) {
-            System.out.println("    /   |     ");
-        }
-        if (essaisRestants == 0) {
-            System.out.println("    / \\ |     ");
-        }
+        System.out.println("     O  |     ");
+        System.out.println("    /|\\ |     ");
+        System.out.println("     -  |     ");
+        System.out.println("    / \\ |     ");
         System.out.println("        |     ");
         System.out.println("     ------   ");
-
-    }
-
-    public void invitationCommande() {
-
     }
 }
 

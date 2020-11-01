@@ -19,7 +19,7 @@ public class Jeu {
     public Jeu() {
         this.nouveauMot();
         clavier = new Scanner(System.in);
-        essaisRestants = 0;
+        essaisRestants = 1;
     }
 
     public String nouveauMot() {
@@ -75,9 +75,6 @@ public class Jeu {
     }
 
     public void afficherDessinPendu() {
-        if (essaisRestants == 0) {
-            System.out.println("DOMMAGE !\n\n");
-        }
         System.out.println("     |--|     ");
         if (essaisRestants == 7) {
             System.out.println("        |     ");
@@ -110,11 +107,6 @@ public class Jeu {
         }
         System.out.println("        |     ");
         System.out.println("     ------   ");
-
-    }
-
-    public void invitationCommande() {
-
     }
 }
 

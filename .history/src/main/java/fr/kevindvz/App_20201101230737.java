@@ -21,8 +21,7 @@ public final class App {
             System.out.println("");
         }
         partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
+        System.out.println(partie.listeJoueur[0].nom);
 
     }
 }

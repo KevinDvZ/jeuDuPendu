@@ -17,12 +17,9 @@ public final class App {
         Jeu partie = new Jeu();
         partie.viderEcran();
         System.out.println("Bienvenue dans le jeu du pendu.");
-        while (partie.ecranChoixJoueur() == false) {
-            System.out.println("");
+        while (partie.ecranChoixJoueur() == true) {
+            System.out.println("mdr");
         }
-        partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
 
     }
 }

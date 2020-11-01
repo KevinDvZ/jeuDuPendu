@@ -20,9 +20,6 @@ public final class App {
         while (partie.ecranChoixJoueur() == false) {
             System.out.println("");
         }
-        partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
 
     }
 }

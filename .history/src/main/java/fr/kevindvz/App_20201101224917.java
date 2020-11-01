@@ -16,13 +16,9 @@ public final class App {
     public static void main(String[] args) {
         Jeu partie = new Jeu();
         partie.viderEcran();
-        System.out.println("Bienvenue dans le jeu du pendu.");
-        while (partie.ecranChoixJoueur() == false) {
-            System.out.println("");
+        if (partie.ecranChoixJoueur() == true) {
+            System.out.println("Lol");
         }
-        partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
 
     }
 }

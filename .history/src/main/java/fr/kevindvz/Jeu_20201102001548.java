@@ -19,7 +19,7 @@ public class Jeu {
     public Jeu() {
         this.nouveauMot();
         clavier = new Scanner(System.in);
-        essaisRestants = 0;
+        essaisRestants = 5;
     }
 
     public String nouveauMot() {
@@ -75,46 +75,26 @@ public class Jeu {
     }
 
     public void afficherDessinPendu() {
-        if (essaisRestants == 0) {
-            System.out.println("DOMMAGE !\n\n");
-        }
         System.out.println("     |--|     ");
-        if (essaisRestants == 7) {
+        if (essaisRestants == 5) {
             System.out.println("        |     ");
         } else {
             System.out.println("     O  |     ");
         }
-        if (essaisRestants >= 6) {
+        if (essaisRestants >= 4) {
             System.out.println("        |     ");
-        }
-        if (essaisRestants == 5) {
-            System.out.println("     |  |     ");
-        }
-        if (essaisRestants == 4) {
+        } else if (essaisRestants == 3) {
             System.out.println("    /|  |     ");
-        }
-        if (essaisRestants <= 3) {
+        } else if (essaisRestants == 2) {
             System.out.println("    /|\\ |     ");
         }
-        if (essaisRestants > 2) {
+        if (essaisRestants >= 2) {
             System.out.println("        |     ");
         }
-        if (essaisRestants <= 2) {
-            System.out.println("     -  |     ");
-        }
-        if (essaisRestants == 1) {
-            System.out.println("    /   |     ");
-        }
-        if (essaisRestants == 0) {
-            System.out.println("    / \\ |     ");
-        }
+        System.out.println("     -  |     ");
+        System.out.println("    / \\ |     ");
         System.out.println("        |     ");
         System.out.println("     ------   ");
-
-    }
-
-    public void invitationCommande() {
-
     }
 }
 

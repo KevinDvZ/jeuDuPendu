@@ -76,7 +76,7 @@ public class Jeu {
 
     public void afficherDessinPendu() {
         if (essaisRestants == 0) {
-            System.out.println("DOMMAGE !\n\n");
+            System.out.println("DOMMAGE !");
         }
         System.out.println("     |--|     ");
         if (essaisRestants == 7) {
@@ -110,10 +110,6 @@ public class Jeu {
         }
         System.out.println("        |     ");
         System.out.println("     ------   ");
-
-    }
-
-    public void invitationCommande() {
 
     }
 }

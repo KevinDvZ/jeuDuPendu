@@ -18,11 +18,8 @@ public final class App {
         partie.viderEcran();
         System.out.println("Bienvenue dans le jeu du pendu.");
         while (partie.ecranChoixJoueur() == false) {
-            System.out.println("");
+            System.out.println("mdr");
         }
-        partie.ecranCreationJoueurs();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
 
     }
 }
