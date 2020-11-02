@@ -228,10 +228,9 @@ public class Jeu {
 
     }
 
-    // methode pour supprimer accent d'un mot, à appliquer lors de la generation du
-    // mot mystere
+    // methode pour supprimer accent d'un mot, appliquer à la generation du mot
     // en effet, je n'ai pas réussi a faire fonctionner matches() avec un regex
-    // fonctionnel, pour pouvoir accepter au clavier les accents...
+    // fonctionnel.
 
     public static String removeAccents(String text) {
         return text == null ? null
