@@ -47,6 +47,5 @@ public final class App {
             partie.initialiserJeu();
 
         }
-        System.out.println("Merci d'avoir joué ! A bientôt :)");
     }
 }

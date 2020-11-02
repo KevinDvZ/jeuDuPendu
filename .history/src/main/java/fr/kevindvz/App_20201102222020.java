@@ -19,15 +19,15 @@ public final class App {
         Jeu partie = new Jeu();
         partie.viderEcran();
         System.out.println("Bienvenue dans le jeu du pendu.");
-        Boolean continuer = true;
+        Boolean stop = false;
 
         // Initialisation du jeux
 
         partie.invitCreationJoueurs();
         partie.initMotMasque();
 
-        // PARTIE
-        while (continuer == true) {
+        // DEBUT DE PARTIE
+        while (stop == false) {
 
             do {
                 partie.afficherDessinPendu();
@@ -43,10 +43,8 @@ public final class App {
 
             } while (partie.victoire == false);
             partie.afficherMessageFinPartie();
-            continuer = partie.invitNouvellePartie();
-            partie.initialiserJeu();
+            stop = partie.invitNouvellePartie();
 
         }
-        System.out.println("Merci d'avoir joué ! A bientôt :)");
     }
 }

@@ -23,8 +23,7 @@ public final class App {
 
         // Initialisation du jeux
 
-        partie.invitCreationJoueurs();
-        partie.initMotMasque();
+        partie.initialiserJeu();
 
         // PARTIE
         while (continuer == true) {
@@ -47,6 +46,5 @@ public final class App {
             partie.initialiserJeu();
 
         }
-        System.out.println("Merci d'avoir joué ! A bientôt :)");
     }
 }

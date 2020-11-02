@@ -53,7 +53,7 @@ public class Jeu {
                 break;
         }
         motMystereStr = motMystereStr.toLowerCase();
-        motMystereStr = removeAccents(motMystereStr);
+        removeAccents(motMystereStr);
         this.motMystere = motMystereStr.split("");
         return motMystereStr;
     }

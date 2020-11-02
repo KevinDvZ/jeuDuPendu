@@ -1,7 +1,5 @@
 package fr.kevindvz;
 
-import java.text.Normalizer;
-import java.text.Normalizer.Form;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
@@ -53,7 +51,6 @@ public class Jeu {
                 break;
         }
         motMystereStr = motMystereStr.toLowerCase();
-        motMystereStr = removeAccents(motMystereStr);
         this.motMystere = motMystereStr.split("");
         return motMystereStr;
     }
@@ -226,15 +223,6 @@ public class Jeu {
         this.victoire = false;
         this.initMotMasque();
 
-    }
-
-    // methode pour supprimer accent d'un mot, appliquer à la generation du mot
-    // en effet, je n'ai pas réussi a faire fonctionner matches() avec un regex
-    // fonctionnel.
-
-    public static String removeAccents(String text) {
-        return text == null ? null
-                : Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
 }

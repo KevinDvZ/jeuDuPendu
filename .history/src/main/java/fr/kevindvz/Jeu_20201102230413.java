@@ -1,7 +1,5 @@
 package fr.kevindvz;
 
-import java.text.Normalizer;
-import java.text.Normalizer.Form;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
@@ -53,7 +51,6 @@ public class Jeu {
                 break;
         }
         motMystereStr = motMystereStr.toLowerCase();
-        motMystereStr = removeAccents(motMystereStr);
         this.motMystere = motMystereStr.split("");
         return motMystereStr;
     }
@@ -179,7 +176,7 @@ public class Jeu {
         System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
 
-        while (!this.clavierEntre.matches("[a-z]") || clavierEntre.length() != 1) {
+        while (!this.clavierEntre.matches("^[a-zà-ù]") || clavierEntre.length() != 1) {
             System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
             this.clavierEntre = this.clavier.next();
             this.nbreEssais++;
@@ -221,20 +218,10 @@ public class Jeu {
     }
 
     public void initialiserJeu() {
-        this.essaisRestants = 7;
-        this.nbreEssais = 0;
-        this.victoire = false;
-        this.initMotMasque();
+        essaisRestants = 7;
+        nbreEssais = 0;
+        victoire = false;
 
-    }
-
-    // methode pour supprimer accent d'un mot, appliquer à la generation du mot
-    // en effet, je n'ai pas réussi a faire fonctionner matches() avec un regex
-    // fonctionnel.
-
-    public static String removeAccents(String text) {
-        return text == null ? null
-                : Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
 }

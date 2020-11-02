@@ -1,15 +1,10 @@
 package fr.kevindvz;
 
-import java.text.Normalizer;
-import java.text.Normalizer.Form;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
 import com.github.javafaker.Faker;
-
-import org.apache.commons.lang3.StringUtils;
 
 public class Jeu {
 
@@ -52,8 +47,6 @@ public class Jeu {
             default:
                 break;
         }
-        motMystereStr = motMystereStr.toLowerCase();
-        motMystereStr = removeAccents(motMystereStr);
         this.motMystere = motMystereStr.split("");
         return motMystereStr;
     }
@@ -61,6 +54,8 @@ public class Jeu {
     public void viderEcran() {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
+
+    // public void invitNombreJoueurs() {
 
     public void invitCreationJoueurs() {
         int nombreJoueurs = 1;
@@ -73,7 +68,7 @@ public class Jeu {
                 nombreJoueurs = Integer.parseInt(clavierEntre);
                 nombreJoueursConnu = true;
                 this.listeJoueur = new Joueur[nombreJoueurs];
-
+                // System.out.println(this.listeJoueur.length);
             } catch (Exception NumberFormatException) {
                 System.out.println("erreur : Veuillez entrer un nombre entier.");
             }
@@ -83,6 +78,7 @@ public class Jeu {
             System.out.println("Joueur " + (i + 1) + ", veuillez entrer votre nom :");
             this.clavierEntre = this.clavier.next();
             this.listeJoueur[i] = new Joueur(clavierEntre);
+            i++;
         }
     }
 
@@ -161,16 +157,15 @@ public class Jeu {
         } else {
             this.essaisRestants--;
             System.out.println("Perdu! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
-
         }
-
+        this.resoudreVictoire();
     }
 
     public void afficherMotMasque() {
         for (String elementAffichage : this.motMystereMasque) {
             System.out.print("  " + elementAffichage);
         }
-        System.out.println(" Aide :" + StringUtils.join(this.motMystere, "") + "\n");
+        // System.out.println(" aide :" + this.motMystere + "\n");
 
     }
 
@@ -179,7 +174,7 @@ public class Jeu {
         System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
 
-        while (!this.clavierEntre.matches("[a-z]") || clavierEntre.length() != 1) {
+        while (!this.clavierEntre.matches("^[a-z]") || clavierEntre.length() != 1) {
             System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
             this.clavierEntre = this.clavier.next();
             this.nbreEssais++;
@@ -188,53 +183,20 @@ public class Jeu {
     }
 
     public void resoudreVictoire() {
-        if (Arrays.equals(this.motMystere, this.motMystereMasque)) {
+        if (this.motMystere == this.motMystereMasque) {
             this.victoire = true;
-            System.out.println("VICTOIRE !");
         }
-
     }
 
     public void afficherMessageFinPartie() {
         this.resoudreVictoire();
-        if (!this.victoire) {
-            System.out.println("Dommage ! Le mot n'a pas été trouvé, malgré vos " + nbreEssais + " essais...");
-            System.out.println("Il fallait trouver le mot \"" + StringUtils.join(this.motMystere, "") + "\". ");
+        if (this.essaisRestants == 0 && !this.victoire) {
+            System.out.println("Dommage ! Le mot n'a pas été trouvé, malgré vos " + nbreEssais + "...");
+            System.out.println("Il fallait trouver le mot \"" + this.motMystere.toString() + "\". ");
         } else {
-            System.out.println("BIEN JOUE ! Vous avez bien trouvé \"" + StringUtils.join(this.motMystere, "")
-                    + "\" au bout de " + nbreEssais + " essais!");
+            System.out.println("BIEN JOUE ! Vous avez bien trouvé \"" + this.motMystere.toString() + "\" au bout de "
+                    + nbreEssais + " !");
         }
-    }
-
-    public Boolean invitNouvellePartie() {
-        System.out.println("Souhaitez-vous faire une nouvelle partie ? O | N");
-        this.clavierEntre = this.clavier.next();
-        while (!this.clavierEntre.matches("^[o,O,n,N]") || clavierEntre.length() != 1) {
-            System.out.println("erreur : veuillez entre O ou N.");
-            this.clavierEntre = this.clavier.next();
-        }
-        if (this.clavierEntre.matches("^[o,O]") == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public void initialiserJeu() {
-        this.essaisRestants = 7;
-        this.nbreEssais = 0;
-        this.victoire = false;
-        this.initMotMasque();
-
-    }
-
-    // methode pour supprimer accent d'un mot, appliquer à la generation du mot
-    // en effet, je n'ai pas réussi a faire fonctionner matches() avec un regex
-    // fonctionnel.
-
-    public static String removeAccents(String text) {
-        return text == null ? null
-                : Normalizer.normalize(text, Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
     }
 
 }

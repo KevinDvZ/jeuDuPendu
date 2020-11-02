@@ -26,7 +26,7 @@ public final class App {
         partie.invitCreationJoueurs();
         partie.initMotMasque();
 
-        // PARTIE
+        // DEBUT DE PARTIE
         while (continuer == true) {
 
             do {
@@ -44,9 +44,7 @@ public final class App {
             } while (partie.victoire == false);
             partie.afficherMessageFinPartie();
             continuer = partie.invitNouvellePartie();
-            partie.initialiserJeu();
 
         }
-        System.out.println("Merci d'avoir joué ! A bientôt :)");
     }
 }
