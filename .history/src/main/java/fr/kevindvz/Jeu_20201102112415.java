@@ -135,6 +135,8 @@ public class Jeu {
 
     }
 
+    }
+
     public void invitationCommande() {
         this.clavierEntre = this.clavier.next();
     }

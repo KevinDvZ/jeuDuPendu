@@ -10,18 +10,15 @@ import com.github.javafaker.Faker;
 public class Jeu {
 
     String motMystere;
-    String[] motMystereAffichage;
     Joueur[] listeJoueur;
     int nombreJoueurs;
     int essaisRestants;
-    boolean jeuInitialisé;
     private Scanner clavier;
     private String clavierEntre;
 
     public Jeu() {
         clavier = new Scanner(System.in);
         essaisRestants = 0;
-        jeuInitialisé = false;
     }
 
     public String nouveauMot() {
@@ -115,22 +112,13 @@ public class Jeu {
 
     }
 
-    public void initMotMystere() {
-
-        if (this.jeuInitialisé == false) {
-            String[] motInArray = this.nouveauMot().split("");
-            this.motMystereAffichage = new String[motInArray.length];
-
-            for (int i = 0; i < motInArray.length; i++) {
-                motMystereAffichage[i] = "__";
-            }
-            this.jeuInitialisé = true;
-        }
-    }
-
     public void affichageMotMystere() {
-        for (String elementAffichage : this.motMystereAffichage) {
-            System.out.println("  " + elementAffichage);
+
+        String[] motInArray = this.nouveauMot().split("");
+        String[] motMystereAffichage = new String[motInArray.length];
+
+        for (String barre : motMystereAffichage) {
+            barre = " __";
         }
 
     }
