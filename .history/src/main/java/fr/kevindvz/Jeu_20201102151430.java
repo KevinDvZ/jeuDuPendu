@@ -20,7 +20,7 @@ public class Jeu {
 
     public Jeu() {
         clavier = new Scanner(System.in);
-        essaisRestants = 7;
+        essaisRestants = 9;
         victoire = false;
 
     }
@@ -82,10 +82,10 @@ public class Jeu {
             System.out.println("     DOMMAGE ! C'EST PERDU.\n\n");
         }
         System.out.println("     |--|     ");
-        if (essaisRestants == 7) {
+        if (essaisRestants >= 8) {
             System.out.println("        |     ");
         }
-        if (essaisRestants <= 6) {
+        if (essaisRestants <= 7) {
             System.out.println("     O  |     ");
         }
         if (essaisRestants >= 6) {
@@ -95,25 +95,21 @@ public class Jeu {
             System.out.println("     |  |     ");
         }
         if (essaisRestants == 4) {
-            System.out.println("    \\|  |     ");
+            System.out.println("    /|  |     ");
         }
         if (essaisRestants <= 3) {
-            System.out.println("    \\|/ |     ");
+            System.out.println("    /|\\ |     ");
         }
         if (essaisRestants > 2) {
             System.out.println("        |     ");
         }
-
         if (essaisRestants <= 2) {
             System.out.println("     -  |     ");
         }
-        if (essaisRestants > 2) {
-            System.out.println("        |     ");
-        }
-        if (essaisRestants == 2) {
+        if (essaisRestants == 1) {
             System.out.println("    /   |     ");
         }
-        if (essaisRestants <= 1) {
+        if (essaisRestants == 0) {
             System.out.println("    / \\ |     ");
         }
         System.out.println("        |     ");
@@ -163,8 +159,8 @@ public class Jeu {
         System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
 
-        while (!this.clavierEntre.matches("^[a-z]") || clavierEntre.length() != 1) {
-            System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
+        while (!this.clavierEntre.matches("^[a-zA-Z]") || clavierEntre.length() != 1) {
+            System.out.println("erreur : veuillez entrer une SEULE lettre de l'alphabet.");
             this.clavierEntre = this.clavier.next();
         }
 

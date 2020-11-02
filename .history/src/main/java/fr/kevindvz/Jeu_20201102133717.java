@@ -1,8 +1,10 @@
 package fr.kevindvz;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import com.github.javafaker.Faker;
 
@@ -13,16 +15,14 @@ public class Jeu {
     Joueur[] listeJoueur;
     int nombreJoueurs;
     int essaisRestants;
-
+    boolean jeuInitialisé;
     private Scanner clavier;
     private String clavierEntre;
-    public boolean victoire;
 
     public Jeu() {
         clavier = new Scanner(System.in);
-        essaisRestants = 7;
-        victoire = false;
-
+        essaisRestants = 9;
+        jeuInitialisé = false;
     }
 
     public String genererMot() {
@@ -84,8 +84,7 @@ public class Jeu {
         System.out.println("     |--|     ");
         if (essaisRestants == 7) {
             System.out.println("        |     ");
-        }
-        if (essaisRestants <= 6) {
+        } else {
             System.out.println("     O  |     ");
         }
         if (essaisRestants >= 6) {
@@ -95,25 +94,21 @@ public class Jeu {
             System.out.println("     |  |     ");
         }
         if (essaisRestants == 4) {
-            System.out.println("    \\|  |     ");
+            System.out.println("    /|  |     ");
         }
         if (essaisRestants <= 3) {
-            System.out.println("    \\|/ |     ");
+            System.out.println("    /|\\ |     ");
         }
         if (essaisRestants > 2) {
             System.out.println("        |     ");
         }
-
         if (essaisRestants <= 2) {
             System.out.println("     -  |     ");
         }
-        if (essaisRestants > 2) {
-            System.out.println("        |     ");
-        }
-        if (essaisRestants == 2) {
+        if (essaisRestants == 1) {
             System.out.println("    /   |     ");
         }
-        if (essaisRestants <= 1) {
+        if (essaisRestants == 0) {
             System.out.println("    / \\ |     ");
         }
         System.out.println("        |     ");
@@ -123,38 +118,26 @@ public class Jeu {
 
     public void initMotMystere() {
 
-        String[] motInArray = this.genererMot().split("");
-        this.motMystereAffichage = new String[motInArray.length];
+        if (this.jeuInitialisé == false) {
+            String[] motInArray = this.genererMot().split("");
+            this.motMystereAffichage = new String[motInArray.length];
 
-        for (int i = 0; i < motInArray.length; i++) {
-            motMystereAffichage[i] = "__";
+            for (int i = 0; i < motInArray.length; i++) {
+                motMystereAffichage[i] = "__";
+            }
+            this.jeuInitialisé = true;
 
         }
     }
 
-    public void analyserLettreRefreshAffichage() {
-        String[] motInArray = this.motMystere.split("");
-        boolean lettreCorrespondante = false;
+    private void traiterEntreeActualiserAffichageMot() {
 
-        for (int i = 0; i < motInArray.length; i++) {
-            if (motInArray[i].matches("[" + this.clavierEntre + "]")) {
-                lettreCorrespondante = true;
-                this.motMystereAffichage[i] = motInArray[i];
-            }
-        }
-        if (lettreCorrespondante == true) {
-            System.out.println("Bravo, une lettre de plus trouvée !\n");
-        } else {
-            this.essaisRestants--;
-            System.out.println("Perdu! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
-        }
     }
 
     public void afficherMotMystere() {
         for (String elementAffichage : this.motMystereAffichage) {
-            System.out.print("  " + elementAffichage);
+            System.out.println("  " + elementAffichage);
         }
-        System.out.println(" aide :" + this.motMystere + "\n");
 
     }
 
@@ -163,13 +146,12 @@ public class Jeu {
         System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
 
-        while (!this.clavierEntre.matches("^[a-z]") || clavierEntre.length() != 1) {
-            System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
+        while (!this.clavierEntre.matches("^[a-zA-Z]") || clavierEntre.length() != 1) {
+            System.out.println("erreur : veuillez entrer une SEULE lettre de l'alphabet.");
             this.clavierEntre = this.clavier.next();
         }
 
     }
-
 }
 
 // Scanner lettre = new Scanner(System.in);

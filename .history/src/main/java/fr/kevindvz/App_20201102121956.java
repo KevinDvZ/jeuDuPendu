@@ -19,19 +19,9 @@ public final class App {
         System.out.println("Bienvenue dans le jeu du pendu.");
         partie.invitNombreJoueurs();
         partie.invitCreationJoueurs();
-        partie.initMotMystere();
         partie.viderEcran();
         partie.afficherDessinPendu();
-        partie.afficherMotMystere();
-        partie.invitEssai();
-        while (!partie.victoire) {
-            partie.viderEcran();
-            partie.analyserLettreRefreshAffichage();
-            partie.afficherDessinPendu();
-            partie.afficherMotMystere();
-            partie.invitEssai();
-
-        }
+        partie.invitationCommande();
 
     }
 }

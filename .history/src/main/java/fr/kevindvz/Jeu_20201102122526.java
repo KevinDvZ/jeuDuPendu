@@ -1,5 +1,6 @@
 package fr.kevindvz;
 
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
@@ -13,19 +14,17 @@ public class Jeu {
     Joueur[] listeJoueur;
     int nombreJoueurs;
     int essaisRestants;
-
+    boolean jeuInitialisé;
     private Scanner clavier;
     private String clavierEntre;
-    public boolean victoire;
 
     public Jeu() {
         clavier = new Scanner(System.in);
-        essaisRestants = 7;
-        victoire = false;
-
+        essaisRestants = 8;
+        jeuInitialisé = false;
     }
 
-    public String genererMot() {
+    public String nouveauMot() {
         int hasard = new Random().nextInt(5);
         switch (hasard) {
             case 0: // nom
@@ -79,13 +78,12 @@ public class Jeu {
 
     public void afficherDessinPendu() {
         if (essaisRestants == 0) {
-            System.out.println("     DOMMAGE ! C'EST PERDU.\n\n");
+            System.out.println("DOMMAGE !\n\n");
         }
         System.out.println("     |--|     ");
         if (essaisRestants == 7) {
             System.out.println("        |     ");
-        }
-        if (essaisRestants <= 6) {
+        } else {
             System.out.println("     O  |     ");
         }
         if (essaisRestants >= 6) {
@@ -95,25 +93,21 @@ public class Jeu {
             System.out.println("     |  |     ");
         }
         if (essaisRestants == 4) {
-            System.out.println("    \\|  |     ");
+            System.out.println("    /|  |     ");
         }
         if (essaisRestants <= 3) {
-            System.out.println("    \\|/ |     ");
+            System.out.println("    /|\\ |     ");
         }
         if (essaisRestants > 2) {
             System.out.println("        |     ");
         }
-
         if (essaisRestants <= 2) {
             System.out.println("     -  |     ");
         }
-        if (essaisRestants > 2) {
-            System.out.println("        |     ");
-        }
-        if (essaisRestants == 2) {
+        if (essaisRestants == 1) {
             System.out.println("    /   |     ");
         }
-        if (essaisRestants <= 1) {
+        if (essaisRestants == 0) {
             System.out.println("    / \\ |     ");
         }
         System.out.println("        |     ");
@@ -123,53 +117,27 @@ public class Jeu {
 
     public void initMotMystere() {
 
-        String[] motInArray = this.genererMot().split("");
-        this.motMystereAffichage = new String[motInArray.length];
+        if (this.jeuInitialisé == false) {
+            String[] motInArray = this.nouveauMot().split("");
+            this.motMystereAffichage = new String[motInArray.length];
 
-        for (int i = 0; i < motInArray.length; i++) {
-            motMystereAffichage[i] = "__";
-
-        }
-    }
-
-    public void analyserLettreRefreshAffichage() {
-        String[] motInArray = this.motMystere.split("");
-        boolean lettreCorrespondante = false;
-
-        for (int i = 0; i < motInArray.length; i++) {
-            if (motInArray[i].matches("[" + this.clavierEntre + "]")) {
-                lettreCorrespondante = true;
-                this.motMystereAffichage[i] = motInArray[i];
+            for (int i = 0; i < motInArray.length; i++) {
+                motMystereAffichage[i] = "__";
             }
-        }
-        if (lettreCorrespondante == true) {
-            System.out.println("Bravo, une lettre de plus trouvée !\n");
-        } else {
-            this.essaisRestants--;
-            System.out.println("Perdu! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
+            this.jeuInitialisé = true;
         }
     }
 
     public void afficherMotMystere() {
         for (String elementAffichage : this.motMystereAffichage) {
-            System.out.print("  " + elementAffichage);
+            System.out.println("  " + elementAffichage);
         }
-        System.out.println(" aide :" + this.motMystere + "\n");
 
     }
 
     public void invitEssai() {
-
-        System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
-
-        while (!this.clavierEntre.matches("^[a-z]") || clavierEntre.length() != 1) {
-            System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
-            this.clavierEntre = this.clavier.next();
-        }
-
     }
-
 }
 
 // Scanner lettre = new Scanner(System.in);

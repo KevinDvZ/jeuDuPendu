@@ -20,17 +20,12 @@ public final class App {
         partie.invitNombreJoueurs();
         partie.invitCreationJoueurs();
         partie.initMotMystere();
-        partie.viderEcran();
-        partie.afficherDessinPendu();
-        partie.afficherMotMystere();
-        partie.invitEssai();
         while (!partie.victoire) {
             partie.viderEcran();
-            partie.analyserLettreRefreshAffichage();
             partie.afficherDessinPendu();
             partie.afficherMotMystere();
             partie.invitEssai();
-
+            partie.analyserLettreRefreshAffichage();
         }
 
     }

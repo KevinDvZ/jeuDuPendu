@@ -163,8 +163,8 @@ public class Jeu {
         System.out.println("Veuillez entrer une lettre :");
         this.clavierEntre = this.clavier.next();
 
-        while (!this.clavierEntre.matches("^[a-z]") || clavierEntre.length() != 1) {
-            System.out.println("erreur : veuillez entrer une SEULE lettre en MINUSCULE de l'alphabet .");
+        while (!this.clavierEntre.matches("^[a-zA-Z]") || clavierEntre.length() != 1) {
+            System.out.println("erreur : veuillez entrer une SEULE lettre de l'alphabet.");
             this.clavierEntre = this.clavier.next();
         }
 

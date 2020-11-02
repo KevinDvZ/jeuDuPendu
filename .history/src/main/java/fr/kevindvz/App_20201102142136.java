@@ -24,14 +24,7 @@ public final class App {
         partie.afficherDessinPendu();
         partie.afficherMotMystere();
         partie.invitEssai();
-        while (!partie.victoire) {
-            partie.viderEcran();
-            partie.analyserLettreRefreshAffichage();
-            partie.afficherDessinPendu();
-            partie.afficherMotMystere();
-            partie.invitEssai();
-
-        }
+        partie.analyserLettreRefreshAffichage();
 
     }
 }
