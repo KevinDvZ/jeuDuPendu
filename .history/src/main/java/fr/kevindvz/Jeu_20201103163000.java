@@ -185,7 +185,6 @@ public class Jeu {
         }
         if (lettreCorrespondante == true) {
             System.out.println("Bravo, une lettre de plus trouvée !\n");
-            this.listeJoueur[numeroJoueurActif].points++;
         } else {
             this.essaisRestants--;
             System.out.println("Perdu! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
@@ -219,9 +218,6 @@ public class Jeu {
         if (Arrays.equals(this.motMystere, this.motMystereMasque)) {
             this.victoire = true;
             System.out.println("VICTOIRE !");
-            for (Joueur joueur : listeJoueur) {
-                joueur.nombredeVictoires++;
-            }
         }
 
     }
@@ -274,13 +270,12 @@ public class Jeu {
 
     public void afficherScores() {
         System.out.println("**** TABLEAU DES SCORES ****");
-        System.out.println(" VOU");
         for (Joueur joueurCible : this.listeJoueur) {
             System.out.println("Joueur " + (ArrayUtils.indexOf(this.listeJoueur, joueurCible) + 1) + " ("
                     + joueurCible.getNom() + ") : " + joueurCible.getPoints() + " POINTS & "
                     + joueurCible.getNombredeVictoires() + " VICTOIRES");
-            System.out.print(" => RATIO DE REUSSITE :");
-            if (joueurCible.getNombredeVictoires() == 0 || joueurCible.getPoints() == 0) {
+            System.out.print(" => RATIO DE VICTOIRE :");
+            if (joueurCible.getNombredeVictoires() == 0 && joueurCible.getPoints() == 0) {
                 System.out.print(" 0 \n");
             } else {
                 System.out.print(joueurCible.getPoints() / joueurCible.getNombredeVictoires() + "\n");

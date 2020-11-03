@@ -19,10 +19,6 @@ public class Joueur {
         this.points = points;
     }
 
-    public void ajouterPoints(int points) {
-        this.points += points;
-    }
-
     public int getNombredeVictoires() {
         return nombredeVictoires;
     }

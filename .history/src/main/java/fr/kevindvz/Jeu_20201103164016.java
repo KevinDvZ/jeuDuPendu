@@ -274,7 +274,6 @@ public class Jeu {
 
     public void afficherScores() {
         System.out.println("**** TABLEAU DES SCORES ****");
-        System.out.println(" VOU");
         for (Joueur joueurCible : this.listeJoueur) {
             System.out.println("Joueur " + (ArrayUtils.indexOf(this.listeJoueur, joueurCible) + 1) + " ("
                     + joueurCible.getNom() + ") : " + joueurCible.getPoints() + " POINTS & "

@@ -19,7 +19,6 @@ public class Jeu {
     Joueur[] listeJoueur;
     int essaisRestants;
     int nbreEssais;
-    int numeroJoueurActif;
 
     private Scanner clavier;
     public String clavierEntre;
@@ -92,27 +91,7 @@ public class Jeu {
     public void afficherJoueurs() {
         System.out.println("Liste des participants :");
         for (Joueur joueur : this.listeJoueur) {
-            System.out
-                    .println("Joueur " + (ArrayUtils.indexOf(this.listeJoueur, joueur) + 1) + " ------> " + joueur.nom);
-        }
-    }
-
-    public void gererTourJoueur() {
-        System.out.println(this.listeJoueur.length);
-        System.out.println(numeroJoueurActif);
-
-        if (this.nbreEssais == 0) {
-
-            this.numeroJoueurActif = new Random().nextInt(this.listeJoueur.length);
-            System.out.println("Le joueur " + this.numeroJoueurActif + 1 + " ("
-                    + this.listeJoueur[numeroJoueurActif].nom + ") commence !");
-        } else if (this.numeroJoueurActif == this.listeJoueur.length - 1) {
-            this.numeroJoueurActif = 0;
-            System.out.println(" Au tour de " + this.listeJoueur[0]);
-
-        } else {
-            this.numeroJoueurActif++;
-            System.out.println("Au tour de " + this.listeJoueur[numeroJoueurActif].nom);
+            System.out.println("Joueur " + ArrayUtils.indexOf(this.listeJoueur, joueur) + 1 + " ------> " + joueur.nom);
         }
     }
 
@@ -185,7 +164,6 @@ public class Jeu {
         }
         if (lettreCorrespondante == true) {
             System.out.println("Bravo, une lettre de plus trouvée !\n");
-            this.listeJoueur[numeroJoueurActif].points++;
         } else {
             this.essaisRestants--;
             System.out.println("Perdu! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
@@ -219,9 +197,6 @@ public class Jeu {
         if (Arrays.equals(this.motMystere, this.motMystereMasque)) {
             this.victoire = true;
             System.out.println("VICTOIRE !");
-            for (Joueur joueur : listeJoueur) {
-                joueur.nombredeVictoires++;
-            }
         }
 
     }
@@ -274,16 +249,15 @@ public class Jeu {
 
     public void afficherScores() {
         System.out.println("**** TABLEAU DES SCORES ****");
-        System.out.println(" VOU");
         for (Joueur joueurCible : this.listeJoueur) {
-            System.out.println("Joueur " + (ArrayUtils.indexOf(this.listeJoueur, joueurCible) + 1) + " ("
+            System.out.println("Joueur " + ArrayUtils.indexOf(this.listeJoueur, joueurCible) + "("
                     + joueurCible.getNom() + ") : " + joueurCible.getPoints() + " POINTS & "
                     + joueurCible.getNombredeVictoires() + " VICTOIRES");
-            System.out.print(" => RATIO DE REUSSITE :");
-            if (joueurCible.getNombredeVictoires() == 0 || joueurCible.getPoints() == 0) {
-                System.out.print(" 0 \n");
+            System.out.print(" => RATIO DE VICTOIRE :");
+            if (joueurCible.getNombredeVictoires() == 0 && joueurCible.getPoints() == 0) {
+                System.out.print(" 0 ");
             } else {
-                System.out.print(joueurCible.getPoints() / joueurCible.getNombredeVictoires() + "\n");
+                System.out.print(joueurCible.getPoints() / joueurCible.getNombredeVictoires());
             }
 
         }
