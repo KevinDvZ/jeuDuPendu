@@ -91,7 +91,7 @@ public class Jeu {
     public void afficherJoueurs() {
         System.out.println("Liste des participants :");
         for (Joueur joueur : this.listeJoueur) {
-            System.out.println("Joueur " + ArrayUtils.indexOf(this.listeJoueur, joueur) + 1 + " ------> " + joueur.nom);
+            System.out.println("Joueur :" + ArrayUtils.indexOf(this.listeJoueur, joueur) + " : " + joueur.nom);
         }
     }
 
@@ -234,7 +234,7 @@ public class Jeu {
 
     }
 
-    // methode pour supprimer accents d'un mot, à appliquer lors de la generation du
+    // methode pour supprimer accent d'un mot, à appliquer lors de la generation du
     // mot mystere
     // en effet, je n'ai pas réussi a faire fonctionner matches() avec un regex
     // fonctionnel, pour pouvoir accepter au clavier les accents...
