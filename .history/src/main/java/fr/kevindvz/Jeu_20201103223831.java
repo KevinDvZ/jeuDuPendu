@@ -183,7 +183,7 @@ public class Jeu {
         }
         if (lettreCorrespondante == true) {
             System.out.println("Bravo, une lettre de plus trouvée !\n");
-            this.listeJoueur[numeroJoueurActif].ajouterPointsPartie(1);
+            this.listeJoueur[numeroJoueurActif].ajouterPoints(1);
         } else if (this.essaisRestants != 0) {
             this.essaisRestants--;
             System.out.println("Pas la bonne lettre! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");

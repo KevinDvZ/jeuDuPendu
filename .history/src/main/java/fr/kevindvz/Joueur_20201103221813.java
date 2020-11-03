@@ -13,16 +13,16 @@ public class Joueur {
         this.nombredeVictoires = 0;
     }
 
-    public int getPointsCumules() {
+    public int getPoints() {
         return pointsCumules;
     }
 
-    public void ajouterPoints(int points) {
-        this.pointsCumules += points;
+    public void setPoints(int points) {
+        this.pointsCumules = points;
     }
 
-    public void ajouterPointsPartie(int points) {
-        this.pointsPartie += points;
+    public void ajouterPoints(int points) {
+        this.pointsPartie += pointsPartie;
     }
 
     public int getNombredeVictoires() {
@@ -45,8 +45,8 @@ public class Joueur {
         return pointsPartie;
     }
 
-    public void setPointsPartie(int points) {
-        this.pointsPartie = points;
+    public void setPointsPartie(int pointsPartie) {
+        this.pointsPartie = 0;
     }
 
 }

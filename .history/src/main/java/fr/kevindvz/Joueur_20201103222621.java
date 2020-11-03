@@ -18,10 +18,6 @@ public class Joueur {
     }
 
     public void ajouterPoints(int points) {
-        this.pointsCumules += points;
-    }
-
-    public void ajouterPointsPartie(int points) {
         this.pointsPartie += points;
     }
 
@@ -45,8 +41,8 @@ public class Joueur {
         return pointsPartie;
     }
 
-    public void setPointsPartie(int points) {
-        this.pointsPartie = points;
+    public void setPointsPartie(int pointsPartie) {
+        this.pointsPartie = pointsPartie;
     }
 
 }

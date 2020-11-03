@@ -183,7 +183,7 @@ public class Jeu {
         }
         if (lettreCorrespondante == true) {
             System.out.println("Bravo, une lettre de plus trouvée !\n");
-            this.listeJoueur[numeroJoueurActif].ajouterPointsPartie(1);
+            this.listeJoueur[numeroJoueurActif].points++;
         } else if (this.essaisRestants != 0) {
             this.essaisRestants--;
             System.out.println("Pas la bonne lettre! Essayez encore.Plus que " + this.essaisRestants + " essais.\n");
@@ -225,7 +225,7 @@ public class Jeu {
     }
 
     public void afficherMessageFinPartie() {
-
+        this.resoudreVictoire();
         if (!this.victoire) {
             System.out.println("Dommage ! Le mot n'a pas été trouvé, malgré vos " + nbreEssais + " essais...");
             System.out.println("Il fallait trouver le mot \"" + StringUtils.join(this.motMystere, "") + "\". ");
@@ -257,9 +257,6 @@ public class Jeu {
         this.nbreEssais = 0;
         this.victoire = false;
         this.initMotMasque();
-        for (Joueur joueur : listeJoueur) {
-            joueur.setPointsPartie(0);
-        }
 
     }
 
@@ -275,19 +272,23 @@ public class Jeu {
 
     public void afficherScores() {
         System.out.println("**** TABLEAU DES SCORES ****");
+        System.out.println(" VOU");
         for (Joueur joueurCible : this.listeJoueur) {
-            joueurCible.ajouterPoints(joueurCible.getPointsPartie());
             System.out.println("Joueur " + (ArrayUtils.indexOf(this.listeJoueur, joueurCible) + 1) + " ("
-                    + joueurCible.getNom() + ") : " + joueurCible.getPointsPartie() + " POINTS & "
+                    + joueurCible.getNom() + ") : " + joueurCible.getPoints() + " POINTS & "
                     + joueurCible.getNombredeVictoires() + " VICTOIRES");
-            System.out.print(joueurCible.getPointsCumules() + " en cumul de point. RATIO DE REUSSITE :");
-            if (joueurCible.getNombredeVictoires() == 0 || joueurCible.getPointsCumules() == 0) {
+            System.out.print(" => RATIO DE REUSSITE :");
+            if (joueurCible.getNombredeVictoires() == 0 || joueurCible.getPoints() == 0) {
                 System.out.print(" 0 \n");
             } else {
-                System.out.print(joueurCible.getPointsCumules() / joueurCible.getNombredeVictoires() + "\n");
+                System.out.print(joueurCible.getPoints() / joueurCible.getNombredeVictoires() + "\n");
             }
 
         }
     }
 
 }
+
+// Scanner lettre = new Scanner(System.in);
+// String lettreChoisie = lettre.next();
+// lettre.close();

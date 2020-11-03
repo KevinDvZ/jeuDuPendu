@@ -21,10 +21,6 @@ public class Joueur {
         this.pointsCumules += points;
     }
 
-    public void ajouterPointsPartie(int points) {
-        this.pointsPartie += points;
-    }
-
     public int getNombredeVictoires() {
         return nombredeVictoires;
     }
